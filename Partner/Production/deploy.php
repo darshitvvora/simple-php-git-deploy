@@ -194,7 +194,7 @@ Running as <b><?php echo trim(shell_exec('whoami')); ?></b>.
 
 <?php
 // Check if the required programs are available
-$requiredBinaries = array('git', 'rsync');
+$requiredBinaries = array('/usr/bin/git', 'rsync');
 if (defined('BACKUP_DIR') && BACKUP_DIR !== false) {
 	$requiredBinaries[] = 'tar';
 	if (!is_dir(BACKUP_DIR) || !is_writable(BACKUP_DIR)) {
@@ -232,7 +232,7 @@ $commands = array();
 if (!is_dir(TMP_DIR)) {
 	// Clone the repository into the TMP_DIR
 	$commands[] = sprintf(
-		'git clone --depth=1 --branch %s %s %s'
+		'/usr/bin/git clone --depth=1 --branch %s %s %s'
 		, BRANCH
 		, REMOTE_REPOSITORY
 		, TMP_DIR
@@ -241,13 +241,13 @@ if (!is_dir(TMP_DIR)) {
 	// TMP_DIR exists and hopefully already contains the correct remote origin
 	// so we'll fetch the changes and reset the contents.
 	$commands[] = sprintf(
-		'git --git-dir="%s.git" --work-tree="%s" fetch origin %s'
+		'/usr/bin/git --git-dir="%s.git" --work-tree="%s" fetch origin %s'
 		, TMP_DIR
 		, TMP_DIR
 		, BRANCH
 	);
 	$commands[] = sprintf(
-		'git --git-dir="%s.git" --work-tree="%s" reset --hard FETCH_HEAD'
+		'/usr/bin/git --git-dir="%s.git" --work-tree="%s" reset --hard FETCH_HEAD'
 		, TMP_DIR
 		, TMP_DIR
 	);
@@ -255,13 +255,13 @@ if (!is_dir(TMP_DIR)) {
 
 // Update the submodules
 $commands[] = sprintf(
-	'git submodule update --init --recursive'
+	'/usr/bin/git submodule update --init --recursive'
 );
 
 // Describe the deployed version
 if (defined('VERSION_FILE') && VERSION_FILE !== '') {
 	$commands[] = sprintf(
-		'git --git-dir="%s.git" --work-tree="%s" describe --always > %s'
+		'/usr/bin/git --git-dir="%s.git" --work-tree="%s" describe --always > %s'
 		, TMP_DIR
 		, TMP_DIR
 		, VERSION_FILE
