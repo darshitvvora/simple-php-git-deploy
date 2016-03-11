@@ -194,7 +194,9 @@ Running as <b><?php echo trim(shell_exec('whoami')); ?></b>.
 
 <?php
 // Check if the required programs are available
-$requiredBinaries = array('/usr/bin/git', 'rsync');
+$requiredBinaries = array();
+//$requiredBinaries = array('/usr/bin/git', 'rsync');
+
 if (defined('BACKUP_DIR') && BACKUP_DIR !== false) {
 	$requiredBinaries[] = 'tar';
 	if (!is_dir(BACKUP_DIR) || !is_writable(BACKUP_DIR)) {
