@@ -36,7 +36,7 @@ define('REMOTE_REPOSITORY', 'https://github.com/quezx/quarcdist.git');
  *
  * @var string
  */
-define('BRANCH', 'master');
+define('BRANCH', 'partner');
 
 /**
  * The location that the code is going to be deployed to.

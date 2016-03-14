@@ -37,7 +37,7 @@ define('REMOTE_REPOSITORY', 'https://github.com/quezx/quarcdist.git');
  * @var string
  */
 
-define('BRANCH', 'staging');
+define('BRANCH', 'partner-staging');
 
 /**
  * The location that the code is going to be deployed to.
@@ -45,7 +45,7 @@ define('BRANCH', 'staging');
  *
  * @var string Full path including the trailing slash
  */
-define('TARGET_DIR', '/home/gloryque/public_html/partner');
+define('TARGET_DIR', '/home/gloryque/public_html/staging-partner');
 
 /**
  * Whether to delete the files that are not in the repository but are on the
