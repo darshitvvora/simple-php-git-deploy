@@ -128,6 +128,8 @@ if (!defined('BACKUP_DIR')) define('BACKUP_DIR', false);
  */
 if (!defined('USE_COMPOSER')) define('USE_COMPOSER', false);
 
+if (!defined('USE_NPM')) define('USE_NPM', false);
+
 /**
  * OPTIONAL
  * The options that the composer is going to use.
@@ -296,6 +298,13 @@ if (defined('USE_COMPOSER') && USE_COMPOSER === true) {
 	}
 }
 
+// Invoke npm
+if (defined('USE_NPM') && USE_NPM === true) {
+	$commands[] = sprintf(
+		'/usr/local/bin/npm install --no-dev'
+	);
+}
+
 // ==================================================[ Deployment ]===
 
 // Compile exclude parameters
@@ -353,6 +362,7 @@ CHECK THE DATA IN YOUR TARGET DIR!
 '
 		);
 		if (CLEAN_UP) {
+			putenv("PATH=/usr/bin");
 			$tmp = shell_exec($commands['cleanup']);
 			printf('
 

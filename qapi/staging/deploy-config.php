@@ -121,6 +121,7 @@ define('BACKUP_DIR', false);
  * @link http://getcomposer.org/
  */
 define('USE_COMPOSER', false);
+define('USE_NPM', true);
 
 /**
  * OPTIONAL
