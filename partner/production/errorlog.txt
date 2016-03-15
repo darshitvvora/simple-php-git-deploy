@@ -1,0 +1,35 @@
+* About to connect() to hooks.slack.com port 443 (#1088)
+*   Trying 54.192.72.238...
+* Connected to hooks.slack.com (54.192.72.238) port 443 (#1088)
+*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+  CApath: none
+* SSL connection using TLS_RSA_WITH_AES_256_CBC_SHA
+* Server certificate:
+* 	subject: CN=*.slack.com,O="Slack Technologies, Inc",L=San Francisco,ST=California,C=US
+* 	start date: Jan 26 00:00:00 2015 GMT
+* 	expire date: Feb 18 23:59:59 2017 GMT
+* 	common name: *.slack.com
+* 	issuer: CN=GeoTrust SSL CA - G3,O=GeoTrust Inc.,C=US
+> POST /services/T08J5DH6V/B0JQC7797/FMy5ksTJLLIMPsDT0d5FPokP HTTP/1.1
+Host: hooks.slack.com
+Accept: */*
+Content-Type: application/json
+Content-Length: 147
+
+* upload completely sent off: 147 out of 147 bytes
+< HTTP/1.1 200 OK
+< Content-Type: text/html
+< Transfer-Encoding: chunked
+< Connection: keep-alive
+< Access-Control-Allow-Origin: *
+< Content-Security-Policy: referrer no-referrer;
+< Date: Tue, 15 Mar 2016 04:17:02 GMT
+< Server: Apache
+< Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+< Vary: Accept-Encoding
+< X-Frame-Options: SAMEORIGIN
+< X-Cache: Miss from cloudfront
+< Via: 1.1 13808c97db6441dbbaf47f3afd84c93b.cloudfront.net (CloudFront)
+< X-Amz-Cf-Id: 3Ix-JbrN1nHKo8aPoaUnrjNRl1Crl51Q7BsTNxDxxjyHvw7bDaizEg==
+< 
+* Connection #1088 to host hooks.slack.com left intact
