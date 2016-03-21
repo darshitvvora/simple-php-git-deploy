@@ -1,35 +1,37 @@
-<?php 
-define('TARGET_DIR', '/home/gloryque/public_html/partner');
-define('REMOTE_REPOSITORY', 'https://github.com/manjeshpv/quarc.ui.partner.dist');
-define('BRANCH', 'master');
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Manjesh
+ * Date: 17-03-2016
+ * Time: 09:48
+ */
 
 
-//API Url
-$url = 'https://hooks.slack.com/services/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';
+function slack_notify($text = "Blank Notification"){
+    if (SLACK_URL) {
+        //Initiate cURL.
+        $ch = curl_init(SLACK_URL);
 
-//Initiate cURL.
-$ch = curl_init($url);
+        //The JSON data.
+        $payload = array(
+            'text' => $text
+        );
 
-//The JSON data.
-$payload = array(
-   'text' => REMOTE_REPOSITORY . '/'. BRANCH.' pulled to folder '. TARGET_DIR
-);
+        //Encode the array into JSON.
+        $jsonDataEncoded = json_encode($payload);
 
-//Encode the array into JSON.
-$jsonDataEncoded = json_encode($payload);
-curl_setopt($ch, CURLOPT_VERBOSE, true);
+        //Tell cURL that we want to send a POST request.
+        curl_setopt($ch, CURLOPT_POST, 1);
 
-curl_setopt($ch, CURLOPT_STDERR, fopen(dirname(__FILE__).'/errorlog.txt', 'w'));
-//Tell cURL that we want to send a POST request.
-curl_setopt($ch, CURLOPT_POST, 1);
+        //Attach our encoded JSON string to the POST fields.
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
 
-//Attach our encoded JSON string to the POST fields.
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+        //Set the content type to application/json
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
-//Set the content type to application/json
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
+        //Execute the request
+        $result = curl_exec($ch);
 
-//Execute the request
-$result = curl_exec($ch);
-
-
+        echo "Notification Sent to Slack" . $text;
+    }
+}

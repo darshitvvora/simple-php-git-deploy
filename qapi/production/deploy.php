@@ -1,4 +1,6 @@
 <?php
+
+include './../../slack.php';
 /**
  * Simple PHP Git deploy script
  *
@@ -226,6 +228,11 @@ Deploying <?php echo REMOTE_REPOSITORY; ?> <?php echo BRANCH."\n"; ?>
 to        <?php echo TARGET_DIR; ?> ...
 
 <?php
+
+$text = 'Deploying '.REMOTE_REPOSITORY." ".BRANCH."\n to ".TARGET_DIR;
+
+slack_notify($text);
+
 // The commands
 $commands = array();
 
@@ -382,6 +389,10 @@ Cleaning up temporary files ...
 		break;
 	}
 }
+
+$text = REMOTE_REPOSITORY . '/'. BRANCH.' hook processed, might be pulled to '. TARGET_DIR;
+
+slack_notify($text);
 ?>
 
 Done.

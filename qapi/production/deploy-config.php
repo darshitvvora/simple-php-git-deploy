@@ -28,7 +28,7 @@ define('SECRET_ACCESS_TOKEN', 'ss4564yfggfhgyuu6');
  *
  * @var string
  */
-define('REMOTE_REPOSITORY', 'https://github.com/quezx/quarcdist.git');
+define('REMOTE_REPOSITORY', 'https://github.com/manjeshpv/quarc.api.dist');
 
 /**
  * The branch that's being deployed.
@@ -36,7 +36,7 @@ define('REMOTE_REPOSITORY', 'https://github.com/quezx/quarcdist.git');
  *
  * @var string
  */
-define('BRANCH', 'api');
+define('BRANCH', 'master');
 
 /**
  * The location that the code is going to be deployed to.
@@ -147,3 +147,6 @@ define('COMPOSER_HOME', false);
  * @var string Email address
  */
 define('EMAIL_ON_ERROR', 'darshit@quetzal.in');
+
+
+define('SLACK_URL',  'https://hooks.slack.com/services/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');
