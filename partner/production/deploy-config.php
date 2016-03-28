@@ -149,4 +149,4 @@ define('COMPOSER_HOME', false);
 define('EMAIL_ON_ERROR', 'darshit@quetzal.in');
 
 
-define('SLACK_URL',  'https://hooks.slack.com/services/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');
+define('SLACK_URL',  'https://hooks.slack.com/services/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');
